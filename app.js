@@ -12,7 +12,13 @@ const CatRoutes=require("./Routes/categories");
 mongoose.connect(process.env.MONGO_DB).then(()=>{
     console.log("connected")
 })
-app.use(cors("*"));
+const corsOptions = {
+    origin: "https://strong-donut-16adba.netlify.app/",
+    methods: 'GET, POST, PUT, DELETE',
+    optionsSuccessStatus: 204,
+  };
+  
+  app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 app.use("/api/auth",AuthRoutes)
