@@ -13,7 +13,7 @@ mongoose.connect(process.env.MONGO_DB).then(()=>{
     console.log("connected")
 })
 const corsOptions = {
-    origin: "https://strong-donut-16adba.netlify.app/",
+    origin: process.env.BASE_URL,
     methods: 'GET, POST, PUT, DELETE',
     optionsSuccessStatus: 204,
   };
