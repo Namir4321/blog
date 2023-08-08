@@ -12,7 +12,13 @@ const CatRoutes=require("./Routes/categories");
 mongoose.connect(process.env.MONGO_DB).then(()=>{
     console.log("connected")
 })
-app.use(cors());
+app.use(cors(
+    {
+        origin: process.env.BASE_URL,
+        methods: 'GET, POST, PUT, DELETE',
+        optionsSuccessStatus: 204, 
+    }
+));
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 app.use("/api/auth",AuthRoutes)
